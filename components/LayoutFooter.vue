@@ -3,7 +3,7 @@
 		<div class="copy">&copy;2022 RyoNak All reserved</div>
 	</footer>
 </template>
-
+ 
 <script>
 	export default{
 		
