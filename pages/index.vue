@@ -1,9 +1,14 @@
 <template>
-  <Tutorial/>
+	<layout-wrapper>		
+	</layout-wrapper>
 </template>
 
 <script>
-export default {
-  name: 'IndexPage'
-}
 </script>
+
+<style>
+	*{
+		box-sizing: border-box;
+		margin: 0;
+	}
+</style>
