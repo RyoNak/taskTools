@@ -1,15 +1,29 @@
 <template>
 	<layout-wrapper>	
-    <h2>新規タスク追加</h2>
+    <h2 class="style_green">新規タスク追加</h2>
     <div class="task-box">
       <dl>
-        <dt>タイトル</dt>
-        <dd><input type="text" v-model="task.title"></dd>
+        <dd>
+           <div class="input_box" :class="{'active': isBorder}">
+              <div class="input_inner">
+                 <input id="style_1" type="text" @focus="isBorder = true" @blur="isBorder = false"　v-model="task.title">
+                 <div class="input_string">タイトルを入力</div>
+              </div>
+           </div>					
+				</dd>
       </dl>
       <dl>
         <dt>日程</dt>
-        <dd><input type="date" v-model="task.date"></dd>
+        <dd><label class="label_style_1"><input type="date" v-model="task.date"></label></dd>
       </dl>
+			<dl>
+				<dt>開始時刻</dt>
+				<dd><input type="time" v-model="task.st_time"></dd>
+			</dl>
+			<dl>
+				<dt>終了時刻</dt>
+				<dd><input type="time" v-model="task.fin_time"></dd>
+			</dl>
       <dl>
         <dt>優先度</dt>
         <dd><input type="number" v-model="task.priority"></dd>
@@ -21,7 +35,10 @@
       <dl>
         <dt>進捗状況</dt>
         <dd>
-          <label><input type="checkbox" v-model="task.done">完了</label>
+          <label><input type="checkbox" v-model="task.done" value="yet">未着手</label>
+          <label><input type="checkbox" v-model="task.done" value="doing">処理中</label>
+          <label><input type="checkbox" v-model="task.done" value="hold">保留</label>
+          <label><input type="checkbox" v-model="task.done" value="comp">完了</label>
         </dd>
       </dl>
       <button type="button" @click="addTask">追加</button>
@@ -36,17 +53,46 @@
         task: {
           title: '',
           date: '',
+					st_time: '',
+					fin_time: '',
           priority: 0,
           memo: '',
           done: false
-        }
+        },
+				isBorder: false,
       }
-    },
+    },	
+		created(){
+			this.setDate();
+			this.setTime();
+		},
     methods:{
       async addTask(){
         await this.$store.dispatch('todo/addTask',this.task);
+				this.$router.push('/');
       },
+			setDate(){
+				const date = new Date();
+				const nowDate = this.formatDate(date);
+				this.task.date = nowDate;
+			},
+			setTime(){
+				const date = new Date();
+				const nowTime = date.getHours() + ':' + date.getMinutes();
+				this.task.st_time = nowTime;
+			},
+      formatDate(date) {
+        let year = date.getFullYear();
+        let month = ("0" + (date.getMonth() + 1)).slice(-2);
+        let day = ("0" + date.getDate()).slice(-2);
+        return `${year}-${month}-${day}`;
+      },	
     }
   }
 </script>
 
+<style scoped>
+	h2{
+		margin-bottom: 2rem;
+	}
+</style>
