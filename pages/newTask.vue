@@ -1,13 +1,13 @@
 <template>
 	<layout-wrapper>	
-    <h2 class="style_green">新規タスク追加</h2>
+    <h2 class="style_green"><i class="fa-solid fa-flag mr"></i>新規タスク追加</h2>
     <div class="task-box">
       <dl>
         <dd>
            <div class="input_box" :class="{'active': isBorder}">
               <div class="input_inner">
                  <input id="style_1" type="text" @focus="isBorder = true" @blur="isBorder = false"　v-model="task.title">
-                 <div class="input_string">タイトルを入力</div>
+                 <div class="input_string"><span v-if="!task.title">タイトルを入力</span></div>
               </div>
            </div>					
 				</dd>

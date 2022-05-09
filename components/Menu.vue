@@ -35,9 +35,9 @@
 		transition: all .3s ease;
 	}
 	li:hover{
-		background: #fff;
-		border-color: #fff;
-		color: #333;
+		background: #F7EDF0;
+		border-color: #F7EDF0;
+		color: #0E181B;
 	} 
   li a{
 		display: flex;
@@ -46,16 +46,16 @@
     width: 100%;
     height: 100%;
     text-decoration: none;
-    color: #fff;
+    color: #F7EDF0;
     user-select: none;
     border: 2px solid transparent;
   }
   li:hover a{
-    color: #333;
+    color: #0E181B;
   }   
   li a.active{
-    background: #fff;
-    color: #333;
-    border-color: #fff;
+    background: #F7EDF0;
+    color: #0E181B;
+    border-color: #F7EDF0;
   }
 </style>

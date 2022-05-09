@@ -1,7 +1,7 @@
 <template>
 	<header>
 		<div>
-			<h2>Task Manager</h2>
+			<h2><nuxt-link to="/">Task Manager</nuxt-link></h2>
 		</div>
 		<Menu/>
 	</header>
@@ -20,8 +20,8 @@
 		left: 0;
 		width: 100%;
 		height: 90px;
-		background: #333;
-		color: #fff;
+		background: #0E181B;
+		color: #F7EDF0;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;		
