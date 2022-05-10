@@ -1,26 +1,62 @@
 export const state = () => ({
-    list: [
-			{'title': 'Google広告打ち合わせ','date': '2022-04-06','st_time': '16:00','fin_time': '17:00','priority': 98,'memo':'新規担当者との顔合わせ','done':'comp'},
-			{'title': 'TNC放映スケジュール確認','date': '2022-04-03','st_time': '16:00','fin_time': '17:00','priority': 98,'memo':'20:00～ 会食予定','done':'yet'},
-			{'title': '新規キャンペーンLP制作','date': '2022-04-15','st_time': '16:00','fin_time': '17:00','priority': 98,'memo':'デザイナー3人、コーダー2人出席','done':'hold'},
-			{'title': '社内マナーセミナー','date': '2022-05-01','st_time': '16:00','fin_time': '17:00','priority': 98,'memo':'新入社員向けの資料制作','done':'doing'},
-		],
+    list: [],
 });
 export const actions = {
   addTask(vuexContext, task){
     vuexContext.commit('add',task);
   },
+	async setTask(vuexContext){
+		let task = [];
+		//タスクを空にする
+		vuexContext.commit('remove');
+		//同期的にfirebaseからデータを取得
+		await new Promise((resolve,reject)=>{
+			this.$fire.database.ref('task').on("value",(obj)=>{
+          if(obj){
+            const rootList = obj.val();
+            if(rootList != null) {
+                const keys = Object.keys(rootList);
+                for(var i in keys){
+                  rootList[keys[i]].id = keys[i];
+                  task.push(rootList[keys[i]]);
+                }
+            }
+						resolve(1);
+          }else{
+						reject(0);
+					}
+        });
+		});
+		vuexContext.commit('select',task);
+	},
 }
 export const mutations = {
   add(state,task){
-    state.list.push({
+    this.$fire.database.ref('task').push({
       'title': task.title,
       'date': task.date,
       'priority': task.priority,
       'memo': task.memo,
       'done': task.done
-    });
-  }
+    });			
+  },
+	select(state,task){
+		/*state.list.splice(0);*/
+		for(var i in task){
+			const obj = {
+				'title': task[i].title,
+        'date': task[i].date,
+        'priority': task[i].priority,
+        'memo': task[i].memo,
+        'done': task[i].done
+			}
+			
+			state.list.push(obj);
+		}
+	},
+	remove(state){
+		state.list.splice(0);
+	},
 }
 export const getters = {
   getList(state){

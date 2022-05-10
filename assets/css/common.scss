@@ -45,7 +45,7 @@ a{
 	&.between{
 		justify-content: space-between;
 	}
-	&.al-center{
+	&.al-center{ 
 		align-items: center;
 	}
 }
@@ -151,4 +151,9 @@ input[type="date"] {
 /*dl dt dd*/
 dl{
   margin-bottom: 2rem;
+	dt{
+		&.wid40{
+			width: 40%;
+		}
+	}
 }

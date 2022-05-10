@@ -16,4 +16,9 @@
 		padding: 50px 0;
     margin: 90px auto 0;
 	}
+	@media screen and (max-width: 1024px){
+		.wrapper{
+			max-width: 95%;
+		}
+	}
 </style>

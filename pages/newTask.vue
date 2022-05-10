@@ -35,10 +35,10 @@
       <dl>
         <dt>進捗状況</dt>
         <dd>
-          <label><input type="checkbox" v-model="task.done" value="yet">未着手</label>
-          <label><input type="checkbox" v-model="task.done" value="doing">処理中</label>
-          <label><input type="checkbox" v-model="task.done" value="hold">保留</label>
-          <label><input type="checkbox" v-model="task.done" value="comp">完了</label>
+          <label><input type="radio" v-model="task.done" value="yet">未着手</label>
+          <label><input type="radio" v-model="task.done" value="doing">処理中</label>
+          <label><input type="radio" v-model="task.done" value="hold">保留</label>
+          <label><input type="radio" v-model="task.done" value="comp">完了</label>
         </dd>
       </dl>
       <button type="button" @click="addTask">追加</button>
@@ -57,11 +57,11 @@
 					fin_time: '',
           priority: 0,
           memo: '',
-          done: false
+          done: ''
         },
 				isBorder: false,
       }
-    },	
+    },
 		created(){
 			this.setDate();
 			this.setTime();
