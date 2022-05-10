@@ -134,5 +134,9 @@ input[type="date"] {
 /*dl dt dd*/
 dl {
   margin-bottom: 2rem; }
-  dl dt.wid40 {
+  dl dt.wid40, dl dd.wid40 {
     width: 40%; }
+  dl dt.wid15, dl dd.wid15 {
+    width: 15%; }
+  dl dt.wid10, dl dd.wid10 {
+    width: 10%; }

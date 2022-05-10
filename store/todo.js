@@ -33,22 +33,28 @@ export const actions = {
 export const mutations = {
   add(state,task){
     this.$fire.database.ref('task').push({
-      'title': task.title,
-      'date': task.date,
-      'priority': task.priority,
-      'memo': task.memo,
-      'done': task.done
+      'title': task.title, //タイトル
+      'reg_date': task.date, //登録日
+      'deadline': task.deadline, //期限
+			'st_time': task.st_time, //開始時刻
+			'fin_time': task.fin_time,//終了時刻
+      'priority': task.priority, //優先度
+      'memo': task.memo,//メモ
+      'done': task.done //ステータス
     });			
   },
 	select(state,task){
 		/*state.list.splice(0);*/
 		for(var i in task){
 			const obj = {
-				'title': task[i].title,
-        'date': task[i].date,
-        'priority': task[i].priority,
-        'memo': task[i].memo,
-        'done': task[i].done
+      'title': task[i].title, //タイトル
+      'reg_date': task[i].reg_date, //登録日
+      'deadline': task[i].deadline, //期限
+			'st_time': task[i].st_time, //開始時刻
+			'fin_time': task[i].fin_time,//終了時刻
+      'priority': task[i].priority, //優先度
+      'memo': task[i].memo,//メモ
+      'done': task[i].done //ステータス
 			}
 			
 			state.list.push(obj);

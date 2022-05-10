@@ -12,7 +12,7 @@
 
 <style scoped>
 	.wrapper{
-    max-width: 1200px;
+    max-width: 1000px;
 		padding: 50px 0;
     margin: 90px auto 0;
 	}

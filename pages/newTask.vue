@@ -13,8 +13,8 @@
 				</dd>
       </dl>
       <dl>
-        <dt>日程</dt>
-        <dd><label class="label_style_1"><input type="date" v-model="task.date"></label></dd>
+        <dt>期限/日程</dt>
+        <dd><label class="label_style_1"><input type="date" v-model="task.deadline"></label></dd>
       </dl>
 			<dl>
 				<dt>開始時刻</dt>
@@ -53,6 +53,7 @@
         task: {
           title: '',
           date: '',
+					deadline: '',
 					st_time: '',
 					fin_time: '',
           priority: 0,
