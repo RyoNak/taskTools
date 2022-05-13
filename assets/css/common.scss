@@ -13,6 +13,7 @@ $wid_pattern_2: 100px;
 $wid_pattern_3: 36px;
 $hei_pattern_1: 36px;
 $hei_pattern_2: 200px;
+$hei_pattern_3: 60px;
 $border_1: 1px solid $gray;
 
 *{
@@ -84,6 +85,17 @@ button{
 	&.al-center{ 
 		align-items: center;
 	}
+	&.al-baseline{
+		align-items: baseline;
+	}	
+	&.al-end{
+		align-items: end;
+	}
+}
+/*float*/
+.float{
+	float: left;
+	margin-right: 15px;
 }
 /*input[type="text"]*/
 .input-effect{
@@ -220,6 +232,9 @@ dl{
 			width: 10%;
 		}
 	}
+	dt{
+		margin-bottom: 10px;
+	}
 }
 /*ボタン*/
 .btn{
@@ -239,6 +254,8 @@ dl{
 		border-radius: 10px;
 		padding: 10px 15px;
 		color: $white_2;
+		width: $wid_pattern_1;
+		height: $hei_pattern_3;
 	}
 } 
 /*drag系*/

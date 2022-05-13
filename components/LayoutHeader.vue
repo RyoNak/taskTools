@@ -26,6 +26,7 @@
 		flex-wrap: wrap;
 		align-items: center;		
 		justify-content: space-between;
+		z-index: 500;
 	}
 	h2{
 		width: 	250px;

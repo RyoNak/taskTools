@@ -12,7 +12,7 @@
 				</dd>
       </dl>
       <dl>
-        <dt>期限/日程</dt>
+        <dt><i class="fa-solid fa-clone mr"></i>期限/日程</dt>
         <dd>
 					<div class="input-effect">
             <label class="label_style_1">
@@ -22,30 +22,35 @@
 					</div>
 				</dd>
       </dl>
-			<dl>
-				<dt>開始時刻</dt>
-				<dd>
-					<div class="input-effect">
-						<label class="label_style_1">
-							<input type="time" v-model="task.st_time">
-							<div class="icon_input clock"></div>
-						</label>
-					</div>	
-				</dd>
-			</dl>
-			<dl>
-				<dt>終了時刻</dt>
-				<dd>
-					<div class="input-effect">
-						<label class="label_style_1">
-							<input type="time" v-model="task.fin_time">
-							<div class="icon_input clock"></div>
-						</label>
-					</div>						
-				</dd>
-			</dl>
+			<div class="flex-base al-end between">
+        <dl>
+          <dt><i class="fa-solid fa-clone mr"></i>開始時刻</dt>
+          <dd>
+            <div class="input-effect">
+              <label class="label_style_1">
+                <input type="time" v-model="task.st_time">
+                <div class="icon_input clock"></div>
+              </label>
+            </div>	
+          </dd>
+        </dl>
+        <dl>
+          <dt><i class="fa-solid fa-clone mr"></i>終了時刻</dt>
+          <dd>
+            <div class="input-effect">
+              <label class="label_style_1">
+                <input type="time" v-model="task.fin_time">
+                <div class="icon_input clock"></div>
+              </label>
+            </div>						
+          </dd>
+        </dl>
+        <dl>
+          <label class="btn btn_1" :class="{'active': timeFlg}"><input type="checkbox" @click="timeFlg = !timeFlg">時刻設定なし</label>
+        </dl>
+			</div>
       <dl>
-        <dt>優先度（1から99まで）</dt>
+        <dt><i class="fa-solid fa-clone mr"></i>優先度（1から99まで）</dt>
 				<dd>
 					<div class="drag-parent" id="drag-1" @click="onClick">
 						<div class="drag-child" id="drag-2" :class="{'active': is_drag}" @dragstart="onDrugStart" @drag="onDrug" @dragend="onDrugEnd" draggable></div>
@@ -54,11 +59,11 @@
 				</dd>
       </dl>
       <dl>
-        <dt>メモ</dt>
+        <dt><i class="fa-solid fa-clone mr"></i>メモ</dt>
         <dd><textarea class="textarea_1" v-model="task.memo"></textarea></dd>
       </dl>
       <dl>
-        <dt>進捗状況</dt>
+        <dt><i class="fa-solid fa-clone mr"></i>進捗状況</dt>
         <dd>
           <label class="btn btn_1" :class="{'active': task.done === 'yet'}"><input type="radio" v-model="task.done" value="yet">未着手</label>
           <label class="btn btn_1" :class="{'active': task.done === 'doing'}"><input type="radio" v-model="task.done" value="doing">処理中</label>
@@ -86,8 +91,18 @@
           done: ''
         },
 				is_drag: false,
+				timeFlg: false,
       }
     },
+		watch:{
+			timeFlg(){
+				console.log(this.timeFlg);
+				if(this.timeFlg){
+					this.task.st_time = '';
+					this.task.fin_time = '';
+				}
+			},
+		},
 		created(){
 			this.setDate();
 			this.setTime();
@@ -163,6 +178,6 @@
 	}
 	.task-box{
 		width: 100%;
-		max-width: 500px;
+		max-width: 580px;
 	}
 </style>

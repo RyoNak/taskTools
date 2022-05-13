@@ -61,6 +61,15 @@ button {
     justify-content: space-between; }
   .flex-base.al-center {
     align-items: center; }
+  .flex-base.al-baseline {
+    align-items: baseline; }
+  .flex-base.al-end {
+    align-items: end; }
+
+/*float*/
+.float {
+  float: left;
+  margin-right: 15px; }
 
 /*input[type="text"]*/
 .input-effect {
@@ -174,6 +183,8 @@ dl {
     width: 15%; }
   dl dt.wid10, dl dd.wid10 {
     width: 10%; }
+  dl dt {
+    margin-bottom: 10px; }
 
 /*ボタン*/
 .btn {
@@ -190,7 +201,9 @@ dl {
     background: #0E181B;
     border-radius: 10px;
     padding: 10px 15px;
-    color: #fff; }
+    color: #fff;
+    width: 200px;
+    height: 60px; }
 
 /*drag系*/
 .drag-parent {
