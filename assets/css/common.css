@@ -25,6 +25,32 @@ a {
   display: block;
   color: #F7EDF0; }
 
+input[type="text"], input[type="date"], textarea {
+  border: 0; }
+  input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border: 0;
+    outline: 0; }
+
+input[type="checkbox"], input[type="radio"] {
+  display: none; }
+
+textarea {
+  width: 100%;
+  min-height: 200px; }
+  textarea.textarea_1 {
+    border: 1px solid #ccc; }
+
+label {
+  display: inline-block; }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none; }
+
 /*flex*/
 .flex-base {
   display: flex;
@@ -37,99 +63,107 @@ a {
     align-items: center; }
 
 /*input[type="text"]*/
-.input_box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  height: 50px;
-  border-radius: 5px;
-  border: 1px solid #0E181B;
-  transition: all .2s ease; }
-  .input_box.active {
-    border-color: #40E69E; }
-  .input_box .input_inner {
+.input-effect {
+  position: relative; }
+
+input[type="text"].input_1, input[type="number"].input_1 {
+  width: 100%;
+  padding: 4px 0;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent; }
+  input[type="text"].input_1.has-content ~ .focus-border, input[type="number"].input_1.has-content ~ .focus-border {
     width: 100%;
-    height: 100%;
-    background-color: transparent;
-    position: relative; }
-    .input_box .input_inner #style_1 {
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      border: none;
-      outline: none;
-      padding: 0 10px;
-      font-size: 16px;
-      background-color: transparent;
-      box-sizing: border-box; }
-      .input_box .input_inner #style_1:focus + .input_string {
-        color: #40E69E;
-        font-size: 10px;
-        line-height: 10px;
-        width: 85px;
-        height: 10px;
-        padding: 0 2px;
-        background-color: white;
-        transform: translate3d(5px, -6px, 0); }
-    .input_box .input_inner .input_string {
-      position: absolute;
-      height: 100%;
-      width: 140px;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      padding-left: 10px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      background-color: transparent;
-      color: #0E181B;
-      box-sizing: border-box;
-      transition: all 0.2s;
-      -webkit-transition: all 0.2s; }
+    transition: 0.4s;
+    left: 0; }
+  input[type="text"].input_1.has-content ~ label, input[type="number"].input_1.has-content ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: #3FB984;
+    transition: 0.3s; }
+  input[type="text"].input_1 ~ label, input[type="number"].input_1 ~ label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px; }
+  input[type="text"].input_1 ~ .focus-border, input[type="number"].input_1 ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3FB984;
+    transition: 0.4s; }
+  input[type="text"].input_1:focus ~ label, input[type="number"].input_1:focus ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: #3FB984;
+    transition: 0.3s; }
+  input[type="text"].input_1:focus ~ .focus-border, input[type="number"].input_1:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0; }
 
 /*input[type="date"]*/
 label.label_style_1 {
   position: relative;
   display: inline-block;
   width: 200px;
-  height: 36px;
-  border: 2px solid #ccc;
-  border-radius: 15px; }
-  label.label_style_1::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: -43px;
-    width: 36px;
-    height: 36px;
-    background-color: #06c;
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px; }
+  border: 1px solid #ccc;
+  border-radius: 5px; }
 
-input[type="date"] {
+.icon_input {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background-color: #3FB984;
+  border-radius: 3px;
+  margin-left: 1rem;
+  cursor: pointer;
+  pointer-events: none; }
+  .icon_input::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #F7EDF0; }
+  .icon_input.calender::before {
+    content: "\f073"; }
+  .icon_input.clock::before {
+    content: "\f017"; }
+
+input[type="date"], input[type="time"] {
   position: relative;
   padding: 0 10px;
-  width: 200px;
+  width: 100%;
   height: 36px;
   border: 0;
   background: transparent;
   box-sizing: border-box;
   font-size: 14px;
   color: #999; }
-  input[type="date"]::-webkit-inner-spin-button {
+  input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
     -webkit-appearance: none; }
-  input[type="date"]::-webkit-clear-button {
+  input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
     -webkit-appearance: none; }
+  input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    color: transparent;
+    background: transparent;
+    cursor: pointer; }
 
 /*dl dt dd*/
 dl {
@@ -140,3 +174,34 @@ dl {
     width: 15%; }
   dl dt.wid10, dl dd.wid10 {
     width: 10%; }
+
+/*ボタン*/
+.btn {
+  cursor: pointer; }
+  .btn.btn_1 {
+    background: #fff;
+    border: 1px solid #3FB984;
+    border-radius: 10px;
+    padding: 10px 15px; }
+    .btn.btn_1.active {
+      color: #fff;
+      background: #3FB984; }
+  .btn.btn_2 {
+    background: #0E181B;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff; }
+
+/*drag系*/
+.drag-parent {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ccc;
+  background: #F7EDF0;
+  overflow: hidden; }
+  .drag-parent .drag-child {
+    width: 36px;
+    height: 36px;
+    background: #3FB984; }
+    .drag-parent .drag-child.active {
+      cursor: none; }

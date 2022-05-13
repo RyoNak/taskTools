@@ -5,7 +5,15 @@ $l_grn: #40E69E;
 $blue: #31475E;
 $l_blue: #639FAB;
 $white: #F7EDF0;
-$main: #0E181B; 
+$white_2: #fff;
+$gray: #ccc;
+$main: #0E181B;
+$wid_pattern_1: 200px;
+$wid_pattern_2: 100px;
+$wid_pattern_3: 36px;
+$hei_pattern_1: 36px;
+$hei_pattern_2: 200px;
+$border_1: 1px solid $gray;
 
 *{
   box-sizing: border-box;
@@ -35,6 +43,34 @@ a{
   display: block;
   color: $white;
 }
+input[type="text"],input[type="date"],textarea{
+	border: 0;
+	&:focus{
+		border: 0;
+		outline: 0;
+	}
+}
+input[type="checkbox"],input[type="radio"]{
+	display: none;
+}
+textarea{
+	width: 100%;
+	min-height: $hei_pattern_2;
+	&.textarea_1{
+		border: $border_1;
+	}
+}  
+label{
+	display: inline-block;
+}
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
 /*flex*/
 .flex-base{
 	display: flex;
@@ -50,90 +86,104 @@ a{
 	}
 }
 /*input[type="text"]*/
-.input_box{
-	display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  width: 70%;
-  height: 50px;
-  border-radius: 5px;
-  border: 1px solid $main;
-	transition: all .2s ease;
-	&.active{
-		border-color: $l_grn;
-	}
-  .input_inner{
+.input-effect{
+	position: relative;
+}
+input[type="text"],input[type="number"]{
+	&.input_1{
 		width: 100%;
-    height: 100%;
-    background-color: transparent; 
-    position: relative;
-    #style_1{
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      width: 100%;
-      top: 0; left: 0; bottom: 0; right: 0;
-      border: none;
-      outline: none;
-      padding: 0 10px;
-      font-size: 16px;
-      background-color: transparent;
-      box-sizing: border-box;
-      &:focus + .input_string{
-        color: $l_grn;
-        font-size: 10px;
-        line-height: 10px;
-        width: 85px;
-        height: 10px;
-        padding: 0 2px;
-        background-color: white;
-        transform:translate3d(5px, -6px, 0);
+    padding: 4px 0;
+    border-bottom: 1px solid $gray;
+    background-color: transparent;	
+		&.has-content{
+			& ~ .focus-border{
+        width: 100%;
+        transition: 0.4s;
+        left: 0;	
       }
-    }
-    .input_string{
-      position: absolute;
-      height: 100%;
-      width: 140px;
-      top: 0; left: 0; bottom: 0; right: 0;
-      padding-left: 10px; 
-      font-size: 16px;
-      display: flex;
-			align-items: center;
-      background-color: transparent;
-      color: $main;
-      box-sizing: border-box;
-      transition: all 0.2s;
-      -webkit-transition: all 0.2s;
+			& ~ label{
+				top: -16px; 
+				font-size: 12px;
+				color: $grn;
+				transition: 0.3s;							
+			}
+		}
+		& ~ label{
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			width: 100%;
+			color: #aaa;
+      transition: 0.3s;
+      z-index: -1;
+      letter-spacing: 0.5px;			
+		}
+		& ~ .focus-border{
+			position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $grn;
+      transition: 0.4s;			
+		}
+    &:focus{
+			& ~ label{
+				top: -16px; 
+				font-size: 12px;
+				color: $grn;
+				transition: 0.3s;				
+			}
+      & ~ .focus-border{
+        width: 100%;
+        transition: 0.4s;
+        left: 0;			
+      }
     }		
-  }	
+	}
 }
 /*input[type="date"]*/
 label.label_style_1{
   position: relative;
   display: inline-block;
-  width: 200px;
-  height: 36px;
-  border: 2px solid #ccc;
-  border-radius: 15px;	
-	&::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: -43px;
-    width: 36px;
-    height: 36px;
-    background-color: #06c;
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-  }
+  width: $wid_pattern_1;
+  border: $border_1;
+  border-radius: 5px;	
 }
-input[type="date"] {
+.icon_input {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+  width: $wid_pattern_3;
+  height: $hei_pattern_1;
+  background-color: $grn;
+  border-radius: 3px;
+	margin-left: 1rem;
+	cursor: pointer;
+	pointer-events: none;
+	&::before{
+    position: absolute;
+    top: 50%;	
+		left: 50%;    
+		transform: translate(-50%,-50%);
+		font-family: "Font Awesome 5 Free"; 
+  	font-weight: 900;
+		color: $white;
+	}	
+	&.calender::before{
+		content: "\f073";
+	}
+	&.clock::before{
+		content: "\f017";
+	}
+}
+input[type="date"] ,input[type="time"]{
   position: relative;
   padding: 0 10px;
-  width: 200px;
-  height: 36px;
+  width: 100%;
+  height: $hei_pattern_1;
   border: 0;
   background: transparent;
   box-sizing: border-box;
@@ -145,9 +195,17 @@ input[type="date"] {
   &::-webkit-clear-button{
     -webkit-appearance: none;
   }	
+	&::-webkit-calendar-picker-indicator {
+  	position: absolute;
+		top: 0;
+		right: 0;
+		width: $wid_pattern_3;
+		height: $hei_pattern_1;
+		color: transparent;
+		background: transparent;
+		cursor: pointer;
+	}
 }
-
-
 /*dl dt dd*/
 dl{
   margin-bottom: 2rem;
@@ -160,6 +218,43 @@ dl{
 		}		
 		&.wid10{
 			width: 10%;
+		}
+	}
+}
+/*ボタン*/
+.btn{
+	cursor: pointer;
+	&.btn_1{
+		background: $white_2;
+		border: 1px solid $grn;
+		border-radius: 10px;
+		padding: 10px 15px;
+		&.active{
+			color: $white_2;
+			background: $grn;
+		}
+	}
+	&.btn_2{
+		background: $main;
+		border-radius: 10px;
+		padding: 10px 15px;
+		color: $white_2;
+	}
+} 
+/*drag系*/
+.drag-parent{
+	width: 100%;
+	height: $hei_pattern_1;
+	border: $border_1;
+	background: $white;
+	overflow: hidden;
+	.drag-child{
+		width: $wid_pattern_3;
+		height: $hei_pattern_1;
+		background: $grn;
+		&.active{
+			cursor: none;
+			//opacity: 0.5;
 		}
 	}
 }
