@@ -7,6 +7,7 @@ $l_blue: #639FAB;
 $white: #F7EDF0;
 $white_2: #fff;
 $gray: #ccc;
+$red: #E54B4B;
 $main: #0E181B;
 $wid_pattern_1: 200px;
 $wid_pattern_2: 100px;
@@ -71,6 +72,15 @@ button{
   outline: none;
   padding: 0;
   appearance: none;
+}
+.validate-error{
+	color: $red;
+	font-size: .8em;
+	margin-top: 10px;
+}
+.mini-msg{
+	font-size: .8em;
+	margin-bottom: 10px;
 }
 /*flex*/
 .flex-base{
@@ -163,6 +173,7 @@ label.label_style_1{
   border: $border_1;
   border-radius: 5px;	
 }
+
 .icon_input {
 	position: absolute;
 	top: 50%;
@@ -220,7 +231,8 @@ input[type="date"] ,input[type="time"]{
 }
 /*dl dt dd*/
 dl{
-  margin-bottom: 2rem;
+	padding: 10px;
+  //margin-bottom: 2rem;
 	dt,dd{
 		&.wid40{
 			width: 40%;
@@ -231,14 +243,29 @@ dl{
 		&.wid10{
 			width: 10%;
 		}
+		&.center{
+			text-align: center;
+		}
 	}
 	dt{
 		margin-bottom: 10px;
+	}
+	&.table-head{
+		border-bottom: 1px solid $gray;
+	}
+	&.pop{
+		cursor: pointer;
+		transition: transform .2s ease;
+		&:hover{
+			transform: scale(1.05);
+			background: $l_grn;
+		}
 	}
 }
 /*ボタン*/
 .btn{
 	cursor: pointer;
+	transition: all .5s ease;
 	&.btn_1{
 		background: $white_2;
 		border: 1px solid $grn;
@@ -256,6 +283,9 @@ dl{
 		color: $white_2;
 		width: $wid_pattern_1;
 		height: $hei_pattern_3;
+    &:disabled{
+      background: $gray;
+    }		
 	}
 } 
 /*drag系*/
@@ -273,5 +303,27 @@ dl{
 			cursor: none;
 			//opacity: 0.5;
 		}
+	}
+}
+/*アイコン風*/
+span{
+	&.span_style_1{
+		display: block;
+		color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+		text-align: center;
+	}
+	&.yet{
+		background: $blue;
+	}
+	&.doing{
+		background: $grn;
+	}
+	&.hold{
+		background: $red;
+	}
+	&.comp{
+		background: $main;
 	}
 }

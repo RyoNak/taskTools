@@ -51,6 +51,15 @@ button {
   padding: 0;
   appearance: none; }
 
+.validate-error {
+  color: #E54B4B;
+  font-size: .8em;
+  margin-top: 10px; }
+
+.mini-msg {
+  font-size: .8em;
+  margin-bottom: 10px; }
+
 /*flex*/
 .flex-base {
   display: flex;
@@ -176,19 +185,30 @@ input[type="date"], input[type="time"] {
 
 /*dl dt dd*/
 dl {
-  margin-bottom: 2rem; }
+  padding: 10px; }
   dl dt.wid40, dl dd.wid40 {
     width: 40%; }
   dl dt.wid15, dl dd.wid15 {
     width: 15%; }
   dl dt.wid10, dl dd.wid10 {
     width: 10%; }
+  dl dt.center, dl dd.center {
+    text-align: center; }
   dl dt {
     margin-bottom: 10px; }
+  dl.table-head {
+    border-bottom: 1px solid #ccc; }
+  dl.pop {
+    cursor: pointer;
+    transition: transform .2s ease; }
+    dl.pop:hover {
+      transform: scale(1.05);
+      background: #40E69E; }
 
 /*ボタン*/
 .btn {
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all .5s ease; }
   .btn.btn_1 {
     background: #fff;
     border: 1px solid #3FB984;
@@ -204,6 +224,8 @@ dl {
     color: #fff;
     width: 200px;
     height: 60px; }
+    .btn.btn_2:disabled {
+      background: #ccc; }
 
 /*drag系*/
 .drag-parent {
@@ -218,3 +240,19 @@ dl {
     background: #3FB984; }
     .drag-parent .drag-child.active {
       cursor: none; }
+
+/*アイコン風*/
+span.span_style_1 {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center; }
+span.yet {
+  background: #31475E; }
+span.doing {
+  background: #3FB984; }
+span.hold {
+  background: #E54B4B; }
+span.comp {
+  background: #0E181B; }

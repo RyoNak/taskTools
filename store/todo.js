@@ -29,6 +29,9 @@ export const actions = {
 		});
 		vuexContext.commit('select',task);
 	},
+	updateTask(vuexContext,task){
+		vuexContext.commit('update',task);
+	},
 }
 export const mutations = {
   add(state,task){
@@ -47,6 +50,7 @@ export const mutations = {
 		/*state.list.splice(0);*/
 		for(var i in task){
 			const obj = {
+			'id': task[i].id,
       'title': task[i].title, //タイトル
       'reg_date': task[i].reg_date, //登録日
       'deadline': task[i].deadline, //期限
@@ -62,6 +66,18 @@ export const mutations = {
 	},
 	remove(state){
 		state.list.splice(0);
+	},
+	update(state,task){
+		console.log(task);
+		this.$fire.database.ref('task').child(task.id).update({
+      title: task.title,
+      deadline: task.deadline,
+      st_time: task.st_time,
+      fin_time: task.fin_time,
+      priority: task.priority,
+      memo: task.memo,
+      done: task.done			
+		});
 	},
 }
 export const getters = {

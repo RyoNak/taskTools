@@ -2,6 +2,7 @@
 	<nav>
 		<ul>
 			<li><nuxt-link to="/" :class="{'active': $route.name === 'index'}">ホーム</nuxt-link></li>
+			<li><nuxt-link to="/list" :class="{'active': $route.name === 'list'}">タスク一覧</nuxt-link></li>
 			<li><nuxt-link to="/newTask" :class="{'active': $route.name === 'newTask'}">タスク追加</nuxt-link></li>
 			<li><nuxt-link to="/summary" :class="{'active': $route.name === 'summary'}">アプリ概要</nuxt-link></li>
 		</ul>
