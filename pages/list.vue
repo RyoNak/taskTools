@@ -8,7 +8,7 @@
 				<dt class="wid15 center">期限</dt>
 				<dt class="wid10 center">優先度</dt>
       </dl>
-			<dl v-for="t in taskList" class="flex-base al-center between pop" @click="updateTask(t)">
+			<dl v-for="t in taskList" class="flex-base al-center between pop" @click.left="updateTask(t)" @click.right.prevent="showContext($event,t)">
         <dd class="wid40">{{ t.title }}</dd>
 				<dd class="wid10 center"><span class="span_style_1" :class="t.done">{{ t.done_label }}</span></dd>
 				<dd class="wid15 center">{{ t.reg_date }}</dd>
@@ -17,6 +17,7 @@
       </dl>
     </div>
 		<modal v-if="is_modal" :task="selectTask" @toggle="toggleModal"></modal>
+		<context-menu v-if="is_context" :position="context_position" @delete="deleteTask"></context-menu>
 	</layout-wrapper>
 </template>
 
@@ -26,7 +27,10 @@ export default{
   data(){
     return {
 			is_modal: false,
+			is_context: false,
 			selectTask: {},
+			context_position: {},
+			targetId: '',
     }
   },
   computed: {
@@ -62,7 +66,20 @@ export default{
 	created(){
 		this.setTask();
 	},
+	mounted(){
+		this.initSetting();
+	},
 	methods:{
+		initSetting(){
+			const self = this;	
+
+			document.body.addEventListener('click',function(e){
+				if(e.target.closest('#contextmenu') === null){
+					self.is_context = false;
+					self.targetId = '';
+				}
+			});
+		},
 		async setTask(){
 			await this.$store.dispatch('todo/setTask');
 		},
@@ -70,9 +87,18 @@ export default{
 			this.is_modal = true;
 			this.selectTask = JSON.parse(JSON.stringify(obj));
 		},
+		async deleteTask(){
+			await this.$store.dispatch('todo/deleteTask',this.targetId);
+			this.$router.go('/list');
+		},
 		toggleModal(){
 			this.is_modal = !this.is_modal;
-		}
+		},
+		showContext(e,obj){
+			this.targetId = JSON.parse(JSON.stringify(obj)).id;
+			this.context_position = {top: e.pageY, left: e.pageX};
+			this.is_context = true;
+		},
 	},
 }
 </script>
