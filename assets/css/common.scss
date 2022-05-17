@@ -211,7 +211,7 @@ input[type="date"] ,input[type="time"]{
   background: transparent;
   box-sizing: border-box;
   font-size: 14px;
-  color: #999;
+  color: $main; 
   &::-webkit-inner-spin-button{
     -webkit-appearance: none;
   }
@@ -285,7 +285,16 @@ dl{
 		height: $hei_pattern_3;
     &:disabled{
       background: $gray;
+			cursor: not-allowed;
     }		
+	}
+	&.btn_3{
+		background: $main;
+		border-radius: 10px;
+		padding: 10px 15px;
+		color: $white_2;
+		display: flex;
+		margin: 1rem 0 0 auto;
 	}
 } 
 /*drag系*/

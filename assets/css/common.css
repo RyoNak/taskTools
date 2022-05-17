@@ -168,7 +168,7 @@ input[type="date"], input[type="time"] {
   background: transparent;
   box-sizing: border-box;
   font-size: 14px;
-  color: #999; }
+  color: #0E181B; }
   input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
     -webkit-appearance: none; }
   input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
@@ -225,7 +225,15 @@ dl {
     width: 200px;
     height: 60px; }
     .btn.btn_2:disabled {
-      background: #ccc; }
+      background: #ccc;
+      cursor: not-allowed; }
+  .btn.btn_3 {
+    background: #0E181B;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    display: flex;
+    margin: 1rem 0 0 auto; }
 
 /*drag系*/
 .drag-parent {
