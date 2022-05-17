@@ -32,6 +32,12 @@ export const actions = {
 	updateTask(vuexContext,task){
 		vuexContext.commit('update',task);
 	},
+	deleteTask(vuexContext,id){
+		vuexContext.commit('delete',id);
+	},
+	addCategory(vuexContext,category){
+		vuexContext.commit('addCategory',category);
+	},
 }
 export const mutations = {
   add(state,task){
@@ -79,6 +85,10 @@ export const mutations = {
       done: task.done			
 		});
 	},
+	delete(state,id){
+		console.log(id);
+		this.$fire.database.ref('task').child(id).remove();
+	}
 }
 export const getters = {
   getList(state){
