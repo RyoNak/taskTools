@@ -4,6 +4,3 @@
 		<task/>
 	</layout-wrapper>
 </template>
-
-<script>
-</script>

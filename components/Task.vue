@@ -75,7 +75,7 @@
           <label class="btn btn_1" :class="{'active': task.done === 'comp'}"><input type="radio" v-model="task.done" value="comp">完了</label>
         </dd>
       </dl>
-      <p class="mini-msg" v-if="ObserverProps.invalid || !ObserverProps.validated">※未入力の項目があります。</p>
+      <p class="mini-msg" v-if="judgeValid(ObserverProps.invalid,ObserverProps.validated)">※未入力の項目があります。</p>
       <button type="button" class="btn btn_2" @click="addTask" :disabled="judgeValid(ObserverProps.invalid,ObserverProps.validated)">{{comp_btn_label}}</button>
     </validation-observer>
   </div>
@@ -129,7 +129,7 @@
 			}
 		},
 		mounted(){
-			this.init();
+			this.init();	
 		},
     methods:{
       async addTask(){
@@ -155,8 +155,15 @@
 				this.task.st_time = nowTime;
 			},
 			init(){
-				const childWidth = document.getElementById('drag-2').offsetWidth;
-				this.task.priority = this.diffPriority(childWidth);
+				if(this.action !== 'update'){
+					// 新規追加時は優先度の初期値を設定する
+					const childWidth = document.getElementById('drag-2').offsetWidth;
+					this.task.priority = this.diffPriority(childWidth);
+				}else{
+					// 変更時は登録済みの優先度からゲージの横幅を設定する
+					const parentWidth = document.getElementById('drag-1').offsetWidth;
+					document.getElementById('drag-2').style.width = Math.round(parentWidth * (this.task.priority / 100)) + 'px';
+				}
 			},
       formatDate(date) {
         let year = date.getFullYear();
@@ -181,7 +188,7 @@
 				this.task.priority = this.diffPriority(childWidth);	
 				document.getElementById('drag-2').style.width = e.offsetX+'px';
 			},
-			// 「優先度」を計算する
+			// 要素の幅から「優先度」を計算する
 			diffPriority(childVal){
 				const parentWidth = document.getElementById('drag-1').offsetWidth;
 				let diff = Math.round(childVal / parentWidth * 100);
