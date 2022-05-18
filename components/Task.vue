@@ -16,6 +16,14 @@
         </dd>
       </dl>
       <dl>
+        <dt><i class="fa-solid fa-clone mr"></i>カテゴリ</dt>
+        <dd>
+          <select v-model="task.category">
+						<option v-for="c in categories" :value="c.name">{{ c.name }}</option>
+					</select>
+        </dd>
+      </dl>			
+      <dl>
         <dt><i class="fa-solid fa-clone mr"></i>期限/日程</dt>
         <dd>
           <div class="input-effect">
@@ -98,6 +106,7 @@
       return {
         task: {
           title: '',
+					category: 'WEB',
           date: '',
 					deadline: '',
 					st_time: '',
@@ -111,6 +120,11 @@
 				comp_btn_label: '追加',
       }
     },
+		computed:{
+			categories(){
+				return this.$store.getters['category/getCategories'];
+			},
+		},
 		watch:{
 			timeFlg(){
 				console.log(this.timeFlg);
@@ -121,6 +135,7 @@
 			},
 		},
 		created(){
+			this.setStore();
 			this.setDate();
 			this.setTime();
 			if(Object.keys(this.parentTask).length !== 0){
@@ -144,6 +159,9 @@
 						break;
 				}
       },
+			async setStore(){
+				await this.$store.dispatch('category/setCategory');
+			},				
 			setDate(){
 				const date = new Date();
 				const nowDate = this.formatDate(date);
