@@ -16,12 +16,16 @@ $hei_pattern_1: 36px;
 $hei_pattern_2: 200px;
 $hei_pattern_3: 60px;
 $border_1: 1px solid $gray;
+$border_2: 2px solid $grn;
 
 *{
   box-sizing: border-box;
   margin: 0;
   line-height: 1;
   font-family: 'Zen Maru Gothic', sans-serif;
+}
+body {
+  overflow-y: scroll;
 }
 h2 {
 	&.style_green{
@@ -33,19 +37,25 @@ h2 {
 i{
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900;
-  &.mr{
-    margin-right: 1rem;
-  }
-  &.ml{
-    margin-left: 1rem;
-  }
 }
+.mr{
+  margin-right: 1rem;
+}
+.ml{
+  margin-left: 1rem;
+}
+.mla{
+	margin-left: auto;
+}
+.mb{
+  margin-bottom: 1rem;
+}	
 a{
   text-decoration: none;
   display: block;
   color: $white;
 }
-input[type="text"],input[type="date"],textarea{
+input[type="text"],input[type="date"],textarea,select{
 	border: 0;
 	&:focus{
 		border: 0;
@@ -54,6 +64,14 @@ input[type="text"],input[type="date"],textarea{
 }
 input[type="checkbox"],input[type="radio"]{
 	display: none;
+}
+select{
+	width: $wid_pattern_1;
+	height: $hei_pattern_1;
+	border: $border_1;
+	&:focus{
+		border: $border_2;
+	}
 }
 textarea{
 	width: 100%;
@@ -91,6 +109,9 @@ button{
 	}
 	&.between{
 		justify-content: space-between;
+	}
+	&.end{
+		justify-content: flex-end;
 	}
 	&.al-center{ 
 		align-items: center;
@@ -234,6 +255,9 @@ dl{
 	padding: 10px;
   //margin-bottom: 2rem;
 	dt,dd{
+		&.wid45{
+			width: 45%;
+		}
 		&.wid40{
 			width: 40%;
 		}
@@ -242,6 +266,9 @@ dl{
 		}		
 		&.wid10{
 			width: 10%;
+		}
+		&.wid8{
+			width: 8%;
 		}
 		&.center{
 			text-align: center;
@@ -335,4 +362,11 @@ span{
 	&.comp{
 		background: $main;
 	}
+}
+/*アイコン*/
+span.icon{
+  width: 36px;
+  height: 36px;
+  position: relative;
+  font-size: 25px;
 }
