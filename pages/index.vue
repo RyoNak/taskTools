@@ -1,21 +1,6 @@
 <template>
 	<layout-wrapper>
-    <div class="task-area">
-      <dl class="flex-base al-center between">
-        <dt class="wid40">タイトル</dt>
-				<dt class="wid15">状態</dt>
-				<dt class="wid15">登録日</dt>
-				<dt class="wid15">期限</dt>
-				<dt class="wid10">優先度</dt>
-      </dl>
-			<dl v-for="t in taskList" class="flex-base al-center between">
-        <dd class="wid40">{{ t.title }}</dd>
-				<dd class="wid15">{{ t.done }}</dd>
-				<dd class="wid15">{{ t.reg_date }}</dd>
-				<dd class="wid15">{{ t.deadline }}</dd>
-				<dd class="wid10">{{ t.priority }}</dd>
-      </dl>
-    </div>
+		<BarChart :chartdata="chartdata"/>
 	</layout-wrapper>
 </template>
 
@@ -24,14 +9,37 @@
 export default{
   data(){
     return {
-
+      chartdata: {
+        labels: ['January','Feburary','March','April'],
+        datasets: [
+          {
+            label: ['Data One'],
+            backgroundColor: '#f87979',
+            data: [40,30,10,25]
+          }
+        ]
+      },				
     }
   },
   computed: {
     taskList(){
       return this.$store.getters['todo/getList'];
-    },
+    },		
   },
+	watch:{
+		taskList:{
+			handler(newVal,oldVal){
+				const c_data = JSON.parse(JSON.stringify(this.taskList));
+				const titles =  c_data.map(v=>v.title);
+				const priorities =  c_data.map(v=>v.priority);
+				
+				console.log(priorities);
+				this.chartdata.labels = titles;
+				this.chartdata.datasets[0].data = priorities;
+			},
+			deep: true
+		},
+	},
 	created(){
 		this.setTask();
 	},
@@ -42,7 +50,3 @@ export default{
 	},
 }
 </script>
-
-<style>
-
-</style>
