@@ -43,6 +43,7 @@ export const mutations = {
   add(state,task){
     this.$fire.database.ref('task').push({
       'title': task.title, //タイトル
+      'category': task.category, //カテゴリ
       'reg_date': task.date, //登録日
       'deadline': task.deadline, //期限
 			'st_time': task.st_time, //開始時刻
@@ -58,6 +59,7 @@ export const mutations = {
 			const obj = {
 			'id': task[i].id,
       'title': task[i].title, //タイトル
+			'category': task[i].category,//カテゴリ
       'reg_date': task[i].reg_date, //登録日
       'deadline': task[i].deadline, //期限
 			'st_time': task[i].st_time, //開始時刻
@@ -77,6 +79,7 @@ export const mutations = {
 		console.log(task);
 		this.$fire.database.ref('task').child(task.id).update({
       title: task.title,
+      category: task.category,
       deadline: task.deadline,
       st_time: task.st_time,
       fin_time: task.fin_time,
