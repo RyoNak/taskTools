@@ -1,7 +1,7 @@
 <template>
 	<div id="contextmenu">
 		<ul>
-			<li @click="confirm">タスクの削除</li>
+			<li @click="confirm">{{ label }}の削除</li>
 		</ul>
 	</div>
 </template>
@@ -10,6 +10,16 @@
 	export default{
 		name: 'ContextMenu',
 		props: {
+			label:{
+				type: String,
+				default: 'タスク',
+				required: true,
+			},
+			targetName: {
+				type: String,
+				default: '',
+				required: true,
+			},
 			position: {
 				type: Object,
 				default: ()=>{return {top: 0,left: 0}},
@@ -30,8 +40,10 @@
 		},
 		methods:{
 			confirm(){
-				if(confirm('このタスクを完全に削除します。よろしいですか？')){
+				if(confirm(`${this.label}名「${this.targetName}」を完全に削除します。よろしいですか？`)){
 					this.$emit('delete');	
+				}else{
+					this.$emit('hide');
 				}
 			},
 		},
