@@ -49,7 +49,6 @@ export default {
 					datasets: [
 						{
 							label: ['優先度'],
-							backgroundColor: '#f87979',
 							data: priorities
 						}
 					]
@@ -69,7 +68,6 @@ export default {
 					datasets: [
 						{
 							label: ['タスクの比率'],
-							backgroundColor: '#f87979',
 							data: Object.values(counts)
 						}
 					]

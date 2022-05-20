@@ -1,12 +1,21 @@
 <script>
 import { Bar, mixins } from 'vue-chartjs'
+import chartjsPluginColorschemes from 'chartjs-plugin-colorschemes'
 
 export default {
   extends: Bar,
   mixins: [mixins.reactiveProp],
   data () {
     return {
-      options: {}
+      options: {
+				responsive: true,
+				plugins:{
+					colorschemes: {
+						scheme: 'brewer.BrBG3',
+						reverse: true
+					},
+				},				
+			}
     }
   },
   mounted () {
