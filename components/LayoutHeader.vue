@@ -1,9 +1,10 @@
 <template>
 	<header>
-		<div>
-			<h2><nuxt-link to="/">Task Manager</nuxt-link></h2>
-		</div>
-		<Menu/>
+		<granim/>
+    <div>
+      <h2><nuxt-link to="/">Task Manager</nuxt-link></h2>
+    </div>
+    <Menu/>
 	</header>
 </template>
 
