@@ -255,11 +255,26 @@ dl{
 	padding: 10px;
   //margin-bottom: 2rem;
 	dt,dd{
+		&.wid65{
+			width: 65%;
+		}
+		&.wid55{
+			width: 55%;
+		}
 		&.wid45{
 			width: 45%;
 		}
 		&.wid40{
 			width: 40%;
+		}
+		&.wid35{
+			width: 35%;
+		}
+		&.wid25{
+			width: 25%;
+		}
+		&.wid20{
+			width: 20%;
 		}
 		&.wid15{
 			width: 15%;
@@ -270,8 +285,14 @@ dl{
 		&.wid8{
 			width: 8%;
 		}
+		&.wid5{
+			width: 5%;
+		}
 		&.center{
 			text-align: center;
+		}
+		&.right{
+			text-align: right;
 		}
 	}
 	dt{

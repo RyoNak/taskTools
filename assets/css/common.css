@@ -206,18 +206,32 @@ input[type="date"], input[type="time"] {
 /*dl dt dd*/
 dl {
   padding: 10px; }
+  dl dt.wid65, dl dd.wid65 {
+    width: 65%; }
+  dl dt.wid55, dl dd.wid55 {
+    width: 55%; }
   dl dt.wid45, dl dd.wid45 {
     width: 45%; }
   dl dt.wid40, dl dd.wid40 {
     width: 40%; }
+  dl dt.wid35, dl dd.wid35 {
+    width: 35%; }
+  dl dt.wid25, dl dd.wid25 {
+    width: 25%; }
+  dl dt.wid20, dl dd.wid20 {
+    width: 20%; }
   dl dt.wid15, dl dd.wid15 {
     width: 15%; }
   dl dt.wid10, dl dd.wid10 {
     width: 10%; }
   dl dt.wid8, dl dd.wid8 {
     width: 8%; }
+  dl dt.wid5, dl dd.wid5 {
+    width: 5%; }
   dl dt.center, dl dd.center {
     text-align: center; }
+  dl dt.right, dl dd.right {
+    text-align: right; }
   dl dt {
     margin-bottom: 10px; }
   dl.table-head {
