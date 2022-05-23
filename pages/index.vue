@@ -2,7 +2,7 @@
 	<layout-wrapper>
 		<div class="graff-container flex-base between">
 			<div class="graff-box">
-				<Midashi>優先度 TOP 5</Midashi>
+				<Midashi><i class="fa-solid fa-crown mr"></i>優先度 TOP 5</Midashi>
 				<!--<h2></h2>-->
 				<BarChart :styles="BarStyles" :chartData="chartPriority" />
 				<div class="table-graff">
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class="graff-box">
-				<Midashi>カテゴリ分布</Midashi>
+				<Midashi><i class="fa-solid fa-crown mr"></i>カテゴリ分布</Midashi>
 				<CircleChart :chartData="chartCategory" />
 				<div class="table-graff">
           <dl class="flex-base al-center between table-head">
@@ -39,8 +39,9 @@
 </template>
 
 <script>
-
+import OrgMixin from '@/mixins/original.js';
 export default {
+	mixins: [OrgMixin],
 	data() {
 		return {
 			chartPriority: {},
@@ -48,9 +49,6 @@ export default {
 		}
 	},
 	computed: {
-		taskList() {
-			return JSON.parse(JSON.stringify(this.$store.state.todo.list));
-		},
 		BarStyles() {
 			return {
 				width: '100%',
@@ -107,7 +105,6 @@ export default {
 		},
 	},
 	created() {
-		this.setTask();
 		this.chartData = {
 			labels: ['loading'],
 			datasets: [
@@ -118,11 +115,6 @@ export default {
 				}
 			]
 		};
-	},
-	methods: {
-		async setTask() {
-			await this.$store.dispatch('todo/setTask');
-		},
 	},
 }
 </script>

@@ -4,7 +4,7 @@
 		<category @reload="setStore"/>
     <div class="category-list">
       <ul>
-        <li v-for="c in categories" class="flex-base al-center mb" @click.left="" @click.right.prevent="showContext($event,c)">
+        <li v-for="c in categories" class="flex-base al-center mb" @click.left="" @click.right.prevent="showContextCategory($event,c)">
 					<span class="flex-base al-center icon mr" :class="c.icon" v-html="c.icon"></span>{{ c.name }}
 				</li>
       </ul>
@@ -14,47 +14,17 @@
 </template>
 
 <script>
+	import OrgMixin from '@/mixins/original.js';
 	export default{
-		data(){
-			return {
-				is_context: false,
-				targetId: '',
-				targetName: '',
-				context_position: {},
-			}
-		},
-		computed: {
-			categories(){
-				return this.$store.getters['category/getCategories'];
-			},
-		},
-		created(){
-			this.setStore();
-		},
-		mounted(){
-			this.initSetting();
-		},
+		mixins: [OrgMixin],
 		methods: {
-      initSetting(){
-        const self = this;	
-
-        document.body.addEventListener('click',function(e){ 
-          if(e.target.closest('#contextmenu') === null){
-            self.is_context = false;
-            self.targetId = '';
-          }
-        });
-      },			
-			async setStore(){
-				await this.$store.dispatch('category/setCategory');
-			},		
 			async deleteCategory(){
 				await this.$store.dispatch('category/deleteCategory',this.targetId);
 				this.targetId = '';
 				this.is_context = false;
 				this.setStore();
 			},			
-      showContext(e,obj){
+      showContextCategory(e,obj){
         this.targetId = JSON.parse(JSON.stringify(obj)).id;
         this.targetName = JSON.parse(JSON.stringify(obj)).name;
         this.context_position = {top: e.pageY, left: e.pageX};
