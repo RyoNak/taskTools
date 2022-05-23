@@ -42,7 +42,7 @@ export default{
 			context_position: {},
 			targetId: '',
 			targetName: '',
-			sortKinds: '',
+			sortKinds: 'regdate_asc',
     }
   },
   computed: {
