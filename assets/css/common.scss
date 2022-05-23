@@ -17,6 +17,21 @@ $hei_pattern_2: 200px;
 $hei_pattern_3: 60px;
 $border_1: 1px solid $gray;
 $border_2: 2px solid $grn;
+/*レスポンシブ用*/
+$tablet: 768px;
+$mobile: 767px;
+
+/*mixin*/
+@mixin tablet{
+	@media screen and (max-width: $tablet){
+		@content;
+	}
+}
+@mixin mobile{
+	@media screen and (max-width: $mobile){
+		@content;
+	}
+}
 
 *{
   box-sizing: border-box;
