@@ -1,5 +1,5 @@
 <template>
-	<h2 class="midashi"><i class="fa-solid fa-crown mr"></i><slot/></h2>
+	<h2 class="midashi"><slot/></h2>
 </template>
 
 <script>
