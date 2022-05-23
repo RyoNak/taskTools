@@ -9,6 +9,16 @@ export default {
     return {
       options: {
 				responsive: true,
+				scales: {
+					xAxes: [{
+						ticks: {
+							display: false
+						}
+					}]
+				},
+				legend:{
+					position: 'bottom',
+				},
 				plugins:{
 					colorschemes: {
 						scheme: 'brewer.BrBG3',
