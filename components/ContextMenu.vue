@@ -2,6 +2,7 @@
 	<div id="contextmenu">
 		<ul>
 			<li @click="confirm">{{ label }}の削除</li>
+			<li @click="$emit('hide')">閉じる</li>
 		</ul>
 	</div>
 </template>
@@ -59,8 +60,19 @@
 		border: 1px solid #ccc;
 		background: #fff;
 	}
+	#contextmenu ul{
+		padding: 0;
+	}
 	#contextmenu ul li{
 		cursor: pointer;
 		list-style: none;
+		padding: 5px 10px;
+		text-align: center;
+	}
+	#contextmenu ul li:hover{
+		background: #3FB984;
+	}
+	#contextmenu ul li + li{
+		border-top: 1px solid #ccc;
 	}
 </style>
