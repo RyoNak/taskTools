@@ -1,0 +1,313 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap");
+/*変数*/
+/*レスポンシブ用*/
+/*mixin*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Zen Maru Gothic', sans-serif; }
+
+body {
+  overflow-y: scroll; }
+
+h2.style_green {
+  padding: 1rem 0;
+  color: #0E181B;
+  position: relative; }
+
+i {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; }
+
+.mr {
+  margin-right: 1rem; }
+
+.ml {
+  margin-left: 1rem; }
+
+.mla {
+  margin-left: auto; }
+
+.mb {
+  margin-bottom: 1rem; }
+
+a {
+  text-decoration: none;
+  display: block;
+  color: #F7EDF0; }
+
+input[type="text"], input[type="date"], textarea, select {
+  border: 0; }
+  input[type="text"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    border: 0;
+    outline: 0; }
+
+input[type="checkbox"], input[type="radio"] {
+  display: none; }
+
+select {
+  width: 200px;
+  height: 36px;
+  border: 1px solid #ccc; }
+  select:focus {
+    border: 2px solid #3FB984; }
+
+textarea {
+  width: 100%;
+  min-height: 200px; }
+  textarea.textarea_1 {
+    border: 1px solid #ccc; }
+
+label {
+  display: inline-block; }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none; }
+
+.validate-error {
+  color: #E54B4B;
+  font-size: .8em;
+  margin-top: 10px; }
+
+.mini-msg {
+  font-size: .8em;
+  margin-bottom: 10px; }
+
+/*flex*/
+.flex-base {
+  display: flex;
+  flex-wrap: wrap; }
+  .flex-base.center {
+    justify-content: center; }
+  .flex-base.between {
+    justify-content: space-between; }
+  .flex-base.end {
+    justify-content: flex-end; }
+  .flex-base.al-center {
+    align-items: center; }
+  .flex-base.al-baseline {
+    align-items: baseline; }
+  .flex-base.al-end {
+    align-items: end; }
+
+/*float*/
+.float {
+  float: left;
+  margin-right: 15px; }
+
+/*input[type="text"]*/
+.input-effect {
+  position: relative; }
+
+input[type="text"].input_1, input[type="number"].input_1 {
+  width: 100%;
+  padding: 4px 0;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent; }
+  input[type="text"].input_1.has-content ~ .focus-border, input[type="number"].input_1.has-content ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0; }
+  input[type="text"].input_1.has-content ~ label, input[type="number"].input_1.has-content ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: #3FB984;
+    transition: 0.3s; }
+  input[type="text"].input_1 ~ label, input[type="number"].input_1 ~ label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px; }
+  input[type="text"].input_1 ~ .focus-border, input[type="number"].input_1 ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3FB984;
+    transition: 0.4s; }
+  input[type="text"].input_1:focus ~ label, input[type="number"].input_1:focus ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: #3FB984;
+    transition: 0.3s; }
+  input[type="text"].input_1:focus ~ .focus-border, input[type="number"].input_1:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0; }
+
+/*input[type="date"]*/
+label.label_style_1 {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px; }
+
+.icon_input {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background-color: #3FB984;
+  border-radius: 3px;
+  margin-left: 1rem;
+  cursor: pointer;
+  pointer-events: none; }
+  .icon_input::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #F7EDF0; }
+  .icon_input.calender::before {
+    content: "\f073"; }
+  .icon_input.clock::before {
+    content: "\f017"; }
+
+input[type="date"], input[type="time"] {
+  position: relative;
+  padding: 0 10px;
+  width: 100%;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #0E181B; }
+  input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; }
+  input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
+    -webkit-appearance: none; }
+  input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    color: transparent;
+    background: transparent;
+    cursor: pointer; }
+
+/*dl dt dd*/
+dl {
+  padding: 10px; }
+  dl dt.wid65, dl dd.wid65 {
+    width: 65%; }
+  dl dt.wid55, dl dd.wid55 {
+    width: 55%; }
+  dl dt.wid45, dl dd.wid45 {
+    width: 45%; }
+  dl dt.wid40, dl dd.wid40 {
+    width: 40%; }
+  dl dt.wid35, dl dd.wid35 {
+    width: 35%; }
+  dl dt.wid25, dl dd.wid25 {
+    width: 25%; }
+  dl dt.wid20, dl dd.wid20 {
+    width: 20%; }
+  dl dt.wid15, dl dd.wid15 {
+    width: 15%; }
+  dl dt.wid10, dl dd.wid10 {
+    width: 10%; }
+  dl dt.wid8, dl dd.wid8 {
+    width: 8%; }
+  dl dt.wid5, dl dd.wid5 {
+    width: 5%; }
+  dl dt.center, dl dd.center {
+    text-align: center; }
+  dl dt.right, dl dd.right {
+    text-align: right; }
+  dl dt {
+    margin-bottom: 10px; }
+  dl.table-head {
+    border-bottom: 1px solid #ccc; }
+  dl.pop {
+    cursor: pointer;
+    transition: transform .2s ease; }
+    dl.pop:hover {
+      transform: scale(1.05);
+      background: #40E69E; }
+
+/*ボタン*/
+.btn {
+  cursor: pointer;
+  transition: all .5s ease; }
+  .btn.btn_1 {
+    background: #fff;
+    border: 1px solid #3FB984;
+    border-radius: 10px;
+    padding: 10px 15px; }
+    .btn.btn_1.active {
+      color: #fff;
+      background: #3FB984; }
+  .btn.btn_2 {
+    background: #0E181B;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    width: 200px;
+    height: 60px; }
+    .btn.btn_2:disabled {
+      background: #ccc;
+      cursor: not-allowed; }
+  .btn.btn_3 {
+    background: #0E181B;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    display: flex;
+    margin: 1rem 0 0 auto; }
+
+/*drag系*/
+.drag-parent {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ccc;
+  background: #F7EDF0;
+  overflow: hidden; }
+  .drag-parent .drag-child {
+    width: 36px;
+    height: 36px;
+    background: #3FB984; }
+    .drag-parent .drag-child.active {
+      cursor: none; }
+
+/*アイコン風*/
+span.span_style_1 {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center; }
+span.yet {
+  background: #31475E; }
+span.doing {
+  background: #3FB984; }
+span.hold {
+  background: #E54B4B; }
+span.comp {
+  background: #0E181B; }
+
+/*アイコン*/
+span.icon {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  font-size: 25px; }
