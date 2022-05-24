@@ -17,6 +17,9 @@
 	import OrgMixin from '@/mixins/original.js';
 	export default{
 		mixins: [OrgMixin],
+    created(){
+      this.setStore();
+    },		
 		methods: {
 			async deleteCategory(){
 				await this.$store.dispatch('category/deleteCategory',this.targetId);
@@ -34,11 +37,11 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.category-list ul{
 		padding: 0;
-	}
-	.category-list ul li{
-		list-style: none;
+  	li{
+      list-style: none;
+    }		
 	}
 </style>

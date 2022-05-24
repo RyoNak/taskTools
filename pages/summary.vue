@@ -65,42 +65,39 @@
 
 <script>
 </script>
-<style scoped>
+<style lang="scss" scoped>
 	.summary-box{
-	}
-	.summary-left{
-		border: 1px solid #ccc;
-		padding: 1rem;
-		width: 52%;		
-	}
-	.summary-right{
-		width: 44%;
-	}
-	dl{
-		font-size: 0.9rem;
-	}
-	dl dt{
-		margin: 0 20px 0 0;
-	}
-	dt{
-		width: 150px;
-	}
-	dd p{
-		line-height: 1.5;
-	}
-	h3{
-		margin-bottom: 2rem;
-	}
-	h4{
-		margin-bottom: 0.5rem;
-	}
-	.desc-box{ 
-		margin-bottom: 1rem;
-	}
-	.desc-box p{
-		font-size: 0.9rem;
-		line-height: 1.5;
-	}
-	
+    .summary-left{
+      border: 1px solid #ccc;
+      padding: 1rem;
+      width: 52%;		
+    }
+    .summary-right{
+      width: 44%;
+    }		
+    dl{
+      font-size: 0.9rem;
+	    dt{
+				width: 150px;
+        margin: 0 20px 0 0;
+      }			
+      dd p{
+        line-height: 1.5;
+      }			
+    }		
+    h3{
+      margin-bottom: 2rem;
+    }
+    h4{
+      margin-bottom: 0.5rem;
+    }		
+    .desc-box{ 
+      margin-bottom: 1rem;
+      p{
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }		
+    }		
+	}	
 </style>
 

@@ -10,15 +10,17 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.wrapper{
     max-width: 1000px;
 		padding: 50px 0;
     margin: 90px auto 0;
-	}
-	@media screen and (max-width: 1024px){
-		.wrapper{
-			max-width: 95%;
+    @include tablet{
+      max-width: 95%;
+			padding-bottom: 150px;
+    }		
+		@include mobile{
+			padding-bottom: 120px;
 		}
 	}
 </style>

@@ -90,8 +90,10 @@
 </template>
 
 <script>
+	import OrgMixin from '@/mixins/original.js';
   export default{
 		name: 'Task',
+		mixins: [OrgMixin],
 		props: {
 			action: {
 				type: String,
@@ -158,10 +160,7 @@
             this.$router.go('/list');												
 						break;
 				}
-      },
-			async setStore(){
-				await this.$store.dispatch('category/setCategory');
-			},				
+      },			
 			setDate(){
 				const date = new Date();
 				const nowDate = this.formatDate(date);

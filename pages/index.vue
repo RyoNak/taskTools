@@ -105,6 +105,8 @@ export default {
 		},
 	},
 	created() {
+		this.setTask();
+		this.setStore();		
 		this.chartData = {
 			labels: ['loading'],
 			datasets: [
@@ -119,17 +121,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.table-graff{
 		margin-top: 2rem;
 		font-size: 0.9rem;
-	}
-	.table-graff dl dt{
-		margin-bottom: 0;
-	}
-	.table-graff dl dd{
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		dl{
+      dt{
+        margin-bottom: 0;
+      }
+      dd{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }			
+		}
 	}
 </style>

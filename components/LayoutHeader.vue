@@ -14,15 +14,15 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	header{
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 90px;
-		background: #0E181B;
-		color: #F7EDF0;
+		background: $main;
+		color: $white;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;		

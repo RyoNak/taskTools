@@ -129,6 +129,10 @@ export default{
 			return task_array;
 		},
   },
+	created(){
+		this.setTask();
+		this.setStore();
+	},	
 	methods:{
 		updateTask(obj){
 			this.is_modal = true;

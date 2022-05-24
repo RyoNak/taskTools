@@ -51,28 +51,28 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	#contextmenu{
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 200px;
-		border: 1px solid #ccc;
-		background: #fff;
-	}
-	#contextmenu ul{
-		padding: 0;
-	}
-	#contextmenu ul li{
-		cursor: pointer;
-		list-style: none;
-		padding: 5px 10px;
-		text-align: center;
-	}
-	#contextmenu ul li:hover{
-		background: #3FB984;
-	}
-	#contextmenu ul li + li{
-		border-top: 1px solid #ccc;
+		border: 1px solid $gray;
+		background: $white_2;
+    ul{
+      padding: 0;
+      li{
+        cursor: pointer;
+        list-style: none;
+        padding: 5px 10px;
+        text-align: center;
+        &:hover{
+          background: $grn;
+        }
+        & + li{
+            border-top: 1px solid $gray;
+        }			
+      }		
+    }		
 	}
 </style>

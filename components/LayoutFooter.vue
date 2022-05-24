@@ -10,14 +10,14 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	footer{
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		color: #fff;
-		background: #333;
+		color: $white_2;
+		background: $main;
 	}
 	.copy{
 		width: 100%;
