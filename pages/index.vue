@@ -1,15 +1,17 @@
 <template>
 	<layout-wrapper>
 		<div class="graff-container flex-base between">
-			<div class="graff-box">
+			<div class="graff-box" :class="{'mobile-graff-box': is_mobile}">
 				<Midashi><i class="fa-solid fa-crown mr"></i>優先度 TOP 5</Midashi>
 				<!--<h2></h2>-->
-				<BarChart :styles="BarStyles" :chartData="chartPriority" />
+				<div class="wrap-chart">
+					<BarChart :styles="BarStyles" :chartData="chartPriority" />
+				</div>
 				<div class="table-graff">
           <dl class="flex-base al-center between table-head">
             <dt class="wid10">順位</dt>
             <dt class="wid65">タスク名</dt>
-            <dt class="wid25 right">優先度スコア</dt>
+            <dt class="wid25 right">優先度</dt>
           </dl>
           <dl v-for="(t,index) in rank_priority" class="flex-base al-center between" >
             <dd class="wid10"><i class="fa-solid" :class="'fa-'+ (index + 1)"></i></dd>
@@ -18,9 +20,11 @@
           </dl> 
 				</div>
 			</div>
-			<div class="graff-box">
+			<div class="graff-box" :class="{'mobile-graff-box': is_mobile}">
 				<Midashi><i class="fa-solid fa-crown mr"></i>カテゴリ分布</Midashi>
-				<CircleChart :chartData="chartCategory" />
+				<div class="wrap-chart">
+					<CircleChart :chartData="chartCategory" />
+				</div>
 				<div class="table-graff">
           <dl class="flex-base al-center between table-head">
             <dt class="wid10">順位</dt>
@@ -122,6 +126,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.wrap-chart{
+		width: 100%;
+	}
 	.table-graff{
 		margin-top: 2rem;
 		font-size: 0.9rem;
@@ -136,4 +143,37 @@ export default {
       }			
 		}
 	}
+	.mobile-graff-box{
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		& + .mobile-graff-box{
+			margin-top: 5rem;
+		}
+		h2{
+			width: 100%;
+			margin-bottom: 1rem;
+		}
+		.wrap-chart{
+      @include tablet{
+        width: 48%;
+        margin-right: 30px;
+      }
+      @include mobile{
+        width: 100%;
+				margin-right: 0;
+      }			
+		}
+		.table-graff{
+			margin-top: 0;
+			width: 45%;
+			@include mobile{
+				width: 100%;
+			}
+			dl{
+				padding: 10px 0;
+			}
+		}
+		
+	}	
 </style>

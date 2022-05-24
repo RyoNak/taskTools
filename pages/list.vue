@@ -19,19 +19,37 @@
 		</div>
     <div class="task-area">
       <dl class="flex-base al-center between table-head">
-        <dt class="wid45">タイトル</dt>
-				<dt class="wid10 center">状態</dt>
-				<dt class="wid10 center">登録日</dt>
-				<dt class="wid10 center">期限</dt>
-				<dt class="wid10 center">優先度</dt>
+				<!--PC表示-->
+				<template v-if="!is_mobile">
+          <dt class="wid45">タイトル</dt>
+          <dt class="wid10 center">状態</dt>
+          <dt class="wid10 center">登録日</dt>
+          <dt class="wid10 center">期限</dt>
+          <dt class="wid10 center">優先度</dt>
+				</template>
+				<!--モバイル表示-->
+				<template v-else>
+          <dt class="wid55">タイトル</dt>
+          <dt class="wid15 center">状態</dt>
+          <dt class="wid25 center">期限</dt>
+				</template>
       </dl>
 			<template v-if="list.length !== 0">
         <dl v-for="t in list" class="flex-base al-center between pop" @click.left="updateTask(t)" @click.right.prevent="showContextTask($event,t)">
-          <dd class="wid45 flex-base al-center"><span class="flex-base al-center icon mr" v-html="t.category_icon"></span>{{ t.title }}</dd>
-          <dd class="wid10 center"><span class="span_style_1" :class="t.done">{{ t.done_label }}</span></dd>
-          <dd class="wid10 center">{{ t.reg_date }}</dd>
-          <dd class="wid10 center">{{ t.deadline }}</dd>
-          <dd class="wid10 center">{{ t.priority }}</dd>
+					<!--PC表示-->
+					<template v-if="!is_mobile">
+            <dd class="wid45 flex-base al-center"><span class="flex-base al-center icon mr" v-html="t.category_icon"></span>{{ t.title }}</dd>
+            <dd class="wid10 center"><span class="span_style_1" :class="t.done">{{ t.done_label }}</span></dd>
+            <dd class="wid10 center">{{ t.reg_date }}</dd>
+            <dd class="wid10 center">{{ t.deadline }}</dd>
+            <dd class="wid10 center">{{ t.priority }}</dd>
+					</template>
+					<!--モバイル表示-->
+					<template v-else>
+            <dd class="wid55 flex-base al-center"><span class="flex-base al-center icon mr" v-html="t.category_icon"></span>{{ t.title }}</dd>
+            <dd class="wid15 center"><span class="span_style_1" :class="t.done">{{ t.done_label }}</span></dd>
+            <dd class="wid25 center">{{ t.deadline }}</dd>					
+					</template>
         </dl>
 			</template>
 			<template v-else>
@@ -152,6 +170,26 @@ export default{
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	@include mobile{
+		.filter-area{
+			margin-bottom: 1rem;
+		}
+    .task-area{
+      font-size: 0.8rem;
+			dl{
+				padding: 10px 0;
+				dt{
+					margin: 0;
+				}
+			}
+      span.icon{
+        display: none;
+      }
+      .span_style_1{
+        padding: 3px;
+        border-radius: 0;
+      }		
+		}
+	}
 </style>

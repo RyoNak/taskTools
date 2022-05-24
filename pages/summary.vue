@@ -70,10 +70,18 @@
     .summary-left{
       border: 1px solid #ccc;
       padding: 1rem;
-      width: 52%;		
+      width: 52%;	
+			@include tablet{
+				width: 100%;
+				margin-bottom: 5rem;
+			}
     }
     .summary-right{
       width: 44%;
+			@include tablet{
+				width: 100%;
+				text-align: justify;
+			}
     }		
     dl{
       font-size: 0.9rem;

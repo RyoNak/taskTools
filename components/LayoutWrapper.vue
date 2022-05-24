@@ -20,6 +20,7 @@
 			padding-bottom: 150px;
     }		
 		@include mobile{
+			max-width: 90%;
 			padding-bottom: 120px;
 		}
 	}

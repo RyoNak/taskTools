@@ -13,5 +13,8 @@
 		padding: 1rem;
 		margin-bottom: 2rem;
 		position: relative;
+		@include mobile{
+			margin-bottom: 1rem;
+		}
 	}
 </style>
