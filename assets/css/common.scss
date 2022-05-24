@@ -1,39 +1,6 @@
+@import '../scss/variable';
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
-/*変数*/
-$grn: #3FB984;
-$l_grn: #40E69E;
-$blue: #31475E;
-$l_blue: #639FAB;
-$white: #F7EDF0;
-$white_2: #fff;
-$gray: #ccc;
-$red: #E54B4B;
-$main: #0E181B;
-$wid_pattern_1: 200px;
-$wid_pattern_2: 100px;
-$wid_pattern_3: 36px;
-$hei_pattern_1: 36px;
-$hei_pattern_2: 200px;
-$hei_pattern_3: 60px;
-$border_1: 1px solid $gray;
-$border_2: 2px solid $grn;
-/*レスポンシブ用*/
-$tablet: 768px;
-$mobile: 767px;
-
-/*mixin*/
-@mixin tablet{
-	@media screen and (max-width: $tablet){
-		@content;
-	}
-}
-@mixin mobile{
-	@media screen and (max-width: $mobile){
-		@content;
-	}
-}
-
-*{
+*{ 
   box-sizing: border-box;
   margin: 0;
   line-height: 1;

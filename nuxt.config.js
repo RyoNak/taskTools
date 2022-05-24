@@ -22,30 +22,11 @@ export default {
       }
     ],
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    //共通CSS
-    '@/assets/css/common.css',
-  ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-		/*'@/plugins/firebase.js',*/
-		{src:'@/plugins/vee-validate'}
-  ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+		'@nuxtjs/style-resources',
 		[
 			'@nuxtjs/firebase',
 		 {	
@@ -62,8 +43,31 @@ export default {
         database: true,
       }	
 		 }
-  	]
-	],
+  	],
+	],	
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    //共通CSS
+    '@/assets/css/common.css',
+  ],
+  styleResources: {
+    scss: [
+      '@/assets/scss/_variable.scss'
+    ]
+  },	
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+		/*'@/plugins/firebase.js',*/
+		{src:'@/plugins/vee-validate'}
+  ],
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+  ],
 /*	privateRuntimeConfig: {
 		API_KEY: process.env.API_KEY,
 		AUTH_DOMAIN: process.env.AUTH_DOMAIN,

@@ -8,7 +8,7 @@
  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	h2{
 		padding: 1rem;
 		margin-bottom: 2rem;
